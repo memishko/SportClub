@@ -1,4 +1,4 @@
-package guiSwing;
+п»їpackage guiSwing;
 
 import javax.swing.*;
 
@@ -9,21 +9,21 @@ import java.util.Vector;
 
 public class FormRating extends JFrame implements ActionListener{	
 	JComboBox jcbSpec;
-	String[] columnNames = {"место","вид спорта","Фамилия","рейтинг"};
+	String[] columnNames = {"РјРµСЃС‚Рѕ","РІРёРґ СЃРїРѕСЂС‚Р°","Р¤Р°РјРёР»РёСЏ","СЂРµР№С‚РёРЅРі"};
 	JTable tab;
 	JComboBox jcbType;
 	
 	FormRating() throws SQLException{
 		Statement st =BdGUI.st; 
-		JFrame frame = new JFrame("Рейтинг");
+		JFrame frame = new JFrame("Р РµР№С‚РёРЅРі");
 	    frame.setSize(600, 400); 	    
 	    Vector<String> spec = new Vector<String>();
-	    spec.addElement("все");
+	    spec.addElement("РІСЃРµ");
 	    Vector<String> type = new Vector<String>();
-	    type.addElement("спортсмены");
-	    type.addElement("тренеры");
+	    type.addElement("СЃРїРѕСЂС‚СЃРјРµРЅС‹");
+	    type.addElement("С‚СЂРµРЅРµСЂС‹");
 	    jcbType = new JComboBox(type);
-	    ResultSet rs = st.executeQuery("SELECT specializeName from Специализация");
+	    ResultSet rs = st.executeQuery("SELECT specializeName from РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ");
 	    while(rs.next())
 	    	spec.addElement(rs.getString(1));
 	    jcbSpec  = new JComboBox<String>(spec);	 
@@ -35,13 +35,13 @@ public class FormRating extends JFrame implements ActionListener{
 		panel.add(jcbType);	
 		panel.add(jcbSpec);		
 		panel.add(scrPane);
-		String[] columnNames = {"место","вид спорта","Фамилия","рейтинг"};
+		String[] columnNames = {"РјРµСЃС‚Рѕ","РІРёРґ СЃРїРѕСЂС‚Р°","Р¤Р°РјРёР»РёСЏ","СЂРµР№С‚РёРЅРі"};
 		int resulSetSize;		
 		String specName = jcbSpec.getSelectedItem().toString(); 
-		if(specName.equals("все")) specName = "";
-			rs = st.executeQuery("SELECT specializeName,SecName,rating FROM Спортсмены s INNER JOIN Специализация spec ON"+
+		if(specName.equals("РІСЃРµ")) specName = "";
+			rs = st.executeQuery("SELECT specializeName,SecName,rating FROM РЎРїРѕСЂС‚СЃРјРµРЅС‹ s INNER JOIN РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ spec ON"+
 			" spec.idSpec = s.spSpecializ WHERE specializeName LIKE '%"+specName+"%' ORDER BY rating DESC");
-			rs.last();//вычисление количества записей
+			rs.last();//РІС‹С‡РёСЃР»РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° Р·Р°РїРёСЃРµР№
 			resulSetSize = rs.getRow();
 			rs.beforeFirst(); 
 			System.out.println(resulSetSize);
@@ -68,17 +68,17 @@ public class FormRating extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		JComboBox box = (JComboBox)e.getSource();
 		String specName = jcbSpec.getSelectedItem().toString(); 
-		if(specName.equals("все")) specName = "";
+		if(specName.equals("РІСЃРµ")) specName = "";
 			ResultSet rs = null;
 			try {
-				if(jcbType.getSelectedItem().equals("спортсмены")){
-				rs = BdGUI.st.executeQuery("SELECT specializeName,SecName,rating FROM Спортсмены s INNER JOIN Специализация spec ON"+
+				if(jcbType.getSelectedItem().equals("СЃРїРѕСЂС‚СЃРјРµРЅС‹")){
+				rs = BdGUI.st.executeQuery("SELECT specializeName,SecName,rating FROM РЎРїРѕСЂС‚СЃРјРµРЅС‹ s INNER JOIN РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ spec ON"+
 				" spec.idSpec = s.spSpecializ WHERE specializeName LIKE '%"+specName+"%' ORDER BY rating DESC");
 				}else{
-					rs = BdGUI.st.executeQuery("SELECT specializeName,CSecName,trating FROM Тренеры s INNER JOIN Специализация spec ON"+
+					rs = BdGUI.st.executeQuery("SELECT specializeName,CSecName,trating FROM РўСЂРµРЅРµСЂС‹ s INNER JOIN РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ spec ON"+
 							" spec.idSpec = s.specializ WHERE specializeName LIKE '%"+specName+"%' ORDER BY trating DESC");
 				}
-				rs.last();//вычисление количества записей
+				rs.last();//РІС‹С‡РёСЃР»РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° Р·Р°РїРёСЃРµР№
 				int resulSetSize = rs.getRow();
 				rs.beforeFirst(); 
 				System.out.println(resulSetSize);
@@ -94,7 +94,7 @@ public class FormRating extends JFrame implements ActionListener{
 					i++;
 				}			
 			} catch (SQLException e1) {
-				// TODO Автоматически созданный блок catch
+				// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 				e1.printStackTrace();
 			}				
 	}

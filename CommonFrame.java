@@ -1,4 +1,4 @@
-package guiSwing;
+п»їpackage guiSwing;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -28,21 +28,21 @@ public abstract class CommonFrame extends JFrame implements ActionListener {
 	  CommonFrame() throws SQLException { 	    
 		  st = BdGUI.st;
 		  Vector<String> spec = new Vector<String>();
-		  ResultSet rs = st.executeQuery("SELECT specializeName FROM Специализация");
+		  ResultSet rs = st.executeQuery("SELECT specializeName FROM РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ");
 		  while(rs.next())
 				spec.addElement(rs.getString(1));
 		  jcbSpec = new JComboBox<String>(spec);
 	
-		  frame1 = new JFrame("Добавление");//добавление спортсмена
+		  frame1 = new JFrame("Р”РѕР±Р°РІР»РµРЅРёРµ");//РґРѕР±Р°РІР»РµРЅРёРµ СЃРїРѕСЂС‚СЃРјРµРЅР°
 		  jtxtName = new JTextField(10);
 		  jtxtRating = new JTextField(10);
 		  panel = new JPanel();
-		  jlabelRating = new JLabel("Рейтинг",null,SwingConstants.RIGHT);
-		  JButton jbutSave = new JButton("Сохранить");
+		  jlabelRating = new JLabel("Р РµР№С‚РёРЅРі",null,SwingConstants.RIGHT);
+		  JButton jbutSave = new JButton("РЎРѕС…СЂР°РЅРёС‚СЊ");
 		  jbutSave.addActionListener(this);		
 		  jtxtRating.setVisible(false);	
 		  jlabelRating.setVisible(false);
-		  jlabelWrong = new JLabel("<html><u><font color=red> Запись имеется",null,SwingConstants.RIGHT);
+		  jlabelWrong = new JLabel("<html><u><font color=red> Р—Р°РїРёСЃСЊ РёРјРµРµС‚СЃСЏ",null,SwingConstants.RIGHT);
 		  jlabelWrong.setVisible(false);
 		  tab = new JTable();
 		  tab.setPreferredScrollableViewportSize(new Dimension(tab.getPreferredScrollableViewportSize().width,7 * tab.getRowHeight()));
@@ -93,4 +93,4 @@ public abstract class CommonFrame extends JFrame implements ActionListener {
 		else return "";
 	}
 	
-}//класс
+}//РєР»Р°СЃСЃ

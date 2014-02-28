@@ -1,4 +1,4 @@
-package guiSwing;
+ï»¿package guiSwing;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,8 +17,8 @@ public class UpdGame {
 		form.jtxtDate.setText(setDate(date));
 		form.jcbSpec.setSelectedItem(spec);
 		st = BdGUI.st;
-		ResultSet rs = st.executeQuery("SELECT skillName,idGame,gameMembers,gameDateAt FROM  ((Ñîðåâíîâàíèÿ s INNER JOIN Ìàñòåðñòâî m ON m.idSkill = s.gameSkill)"+
-		" INNER JOIN Ñïåöèàëèçàöèÿ spec ON spec.idSpec = s.gameSpecializ)  WHERE gameName='"+name+"' AND city ='"+city+
+		ResultSet rs = st.executeQuery("SELECT skillName,idGame,gameMembers,gameDateAt FROM  ((Ð¡Ð¾Ñ€ÐµÐ²Ð½Ð¾Ð²Ð°Ð½Ð¸Ñ s INNER JOIN ÐœÐ°ÑÑ‚ÐµÑ€ÑÑ‚Ð²Ð¾ m ON m.idSkill = s.gameSkill)"+
+		" INNER JOIN Ð¡Ð¿ÐµÑ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ spec ON spec.idSpec = s.gameSpecializ)  WHERE gameName='"+name+"' AND city ='"+city+
 		"' AND specializeName='"+spec+"'");
 		if(rs.next()){
 			form.jcbSkill.setSelectedItem(rs.getString("skillName"));	
@@ -26,7 +26,7 @@ public class UpdGame {
 			form.jtxtCount.setText(rs.getString("gameMembers"));
 			form.jtxtDOB.setText(rs.getString("gameDateAt"));
 		}
-		rs = st.executeQuery("SELECT SecName,spDOB FROM Ñïîðòñìåíû,Ñîðåâíîâàíèÿ WHERE Skill>=gameSkill AND gameName ='"+name+"' AND gameDate>Date() AND traum=false AND YEAR(spDOB)>="+form.jtxtDOB.getText());		
+		rs = st.executeQuery("SELECT SecName,spDOB FROM Ð¡Ð¿Ð¾Ñ€Ñ‚ÑÐ¼ÐµÐ½Ñ‹,Ð¡Ð¾Ñ€ÐµÐ²Ð½Ð¾Ð²Ð°Ð½Ð¸Ñ WHERE Skill>=gameSkill AND gameName ='"+name+"' AND gameDate>Date() AND traum=false AND YEAR(spDOB)>="+form.jtxtDOB.getText());		
 		while(rs.next()) {
 			Vector<String> data = new Vector<String>();
 			//data.addElement(rs.getString("SecName"));

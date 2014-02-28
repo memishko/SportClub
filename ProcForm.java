@@ -1,4 +1,4 @@
-package guiSwing;
+п»їpackage guiSwing;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -30,9 +30,9 @@ public class ProcForm extends JFrame implements MouseListener,ActionListener {
 		tab.addMouseListener(this);
 		JScrollPane jscrPane = new JScrollPane(tab);
 		panel.add(jscrPane);
-		JButton jbtnSave = new JButton("Сохранить");
+		JButton jbtnSave = new JButton("РЎРѕС…СЂР°РЅРёС‚СЊ");
 		jbtnSave.addActionListener(this);		
-		labelWrong = new JLabel("<html><u><font color=red> запись имеется",null,SwingConstants.CENTER);
+		labelWrong = new JLabel("<html><u><font color=red> Р·Р°РїРёСЃСЊ РёРјРµРµС‚СЃСЏ",null,SwingConstants.CENTER);
 		panel.add(new JLabel("<html><u><font color=red>"+name,null,SwingConstants.CENTER),BorderLayout.NORTH);		
 		timer = new Timer( 1500, new ActionListener()
 		  {
@@ -41,10 +41,10 @@ public class ProcForm extends JFrame implements MouseListener,ActionListener {
 		    	 timer.stop();
 		      }
 		  } );
-		mod = new DefaultTableModel(new String[] {"Фамилия", "место"},0);		
+		mod = new DefaultTableModel(new String[] {"Р¤Р°РјРёР»РёСЏ", "РјРµСЃС‚Рѕ"},0);		
 		try {
-			ResultSet rs = BdGUI.st.executeQuery("SELECT SecName,pos FROM (протоколы p INNER JOIN Спортсмены s ON p.IDsp = s.idS) INNER JOIN"+
-			" Соревнования g ON g.idGame = p.IDSr WHERE gameName = '"+name+"'");			
+			ResultSet rs = BdGUI.st.executeQuery("SELECT SecName,pos FROM (РїСЂРѕС‚РѕРєРѕР»С‹ p INNER JOIN РЎРїРѕСЂС‚СЃРјРµРЅС‹ s ON p.IDsp = s.idS) INNER JOIN"+
+			" РЎРѕСЂРµРІРЅРѕРІР°РЅРёСЏ g ON g.idGame = p.IDSr WHERE gameName = '"+name+"'");			
 			while(rs.next()){ 
 				Vector<String> insData = new Vector<String>();
 				insData.addElement(rs.getString("SecName"));
@@ -52,7 +52,7 @@ public class ProcForm extends JFrame implements MouseListener,ActionListener {
 				mod.addRow(insData);
 			}					
 		} catch (SQLException e) {
-			// TODO Автоматически созданный блок catch
+			// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 			e.printStackTrace();
 		}		
 		labelWrong.setVisible(false);
@@ -75,38 +75,38 @@ public class ProcForm extends JFrame implements MouseListener,ActionListener {
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Автоматически созданная заглушка метода
+		// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅР°СЏ Р·Р°РіР»СѓС€РєР° РјРµС‚РѕРґР°
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Автоматически созданная заглушка метода
+		// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅР°СЏ Р·Р°РіР»СѓС€РєР° РјРµС‚РѕРґР°
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Автоматически созданная заглушка метода
+		// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅР°СЏ Р·Р°РіР»СѓС€РєР° РјРµС‚РѕРґР°
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Автоматически созданная заглушка метода
+		// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅР°СЏ Р·Р°РіР»СѓС€РєР° РјРµС‚РѕРґР°
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("Сохранить")){
+		if(e.getActionCommand().equals("РЎРѕС…СЂР°РЅРёС‚СЊ")){
 			 try {
 				/* for(int i =0;i<col;i++){
-					 BdGUI.st.executeUpdate("UPDATE протоколы SET pos =");
+					 BdGUI.st.executeUpdate("UPDATE РїСЂРѕС‚РѕРєРѕР»С‹ SET pos =");
 				 }*/
 				 for(int i = 0;i<mod.getRowCount();i++){		
-					 ResultSet rs = BdGUI.st.executeQuery("SELECT IDsp,IDSr FROM (протоколы p INNER JOIN спортсмены s ON s.idS=p.IDsp)"+
-							 " INNER JOIN соревнования g ON g.idGame=p.idSr WHERE SecName='"+tab.getValueAt(i, 0)+"' AND gameName='"+
+					 ResultSet rs = BdGUI.st.executeQuery("SELECT IDsp,IDSr FROM (РїСЂРѕС‚РѕРєРѕР»С‹ p INNER JOIN СЃРїРѕСЂС‚СЃРјРµРЅС‹ s ON s.idS=p.IDsp)"+
+							 " INNER JOIN СЃРѕСЂРµРІРЅРѕРІР°РЅРёСЏ g ON g.idGame=p.idSr WHERE SecName='"+tab.getValueAt(i, 0)+"' AND gameName='"+
 							 name+"'");
 					 if(rs.next()){
 						 tab.setRowSelectionInterval(i, i); 
@@ -114,30 +114,30 @@ public class ProcForm extends JFrame implements MouseListener,ActionListener {
 						 timer.start();
 						 break;
 					 }else{
-						 BdGUI.st.executeUpdate("INSERT INTO протоколы (IDsp,IDSr,pos) SELECT idS,idGame,"+tab.getValueAt(i, 1)+
-								 " FROM Спортсмены, Соревнования"+" WHERE SecName ='"+tab.getValueAt(i, 0)+"' AND gameName='"+name+"'");
+						 BdGUI.st.executeUpdate("INSERT INTO РїСЂРѕС‚РѕРєРѕР»С‹ (IDsp,IDSr,pos) SELECT idS,idGame,"+tab.getValueAt(i, 1)+
+								 " FROM РЎРїРѕСЂС‚СЃРјРµРЅС‹, РЎРѕСЂРµРІРЅРѕРІР°РЅРёСЏ"+" WHERE SecName ='"+tab.getValueAt(i, 0)+"' AND gameName='"+name+"'");
 						 System.out.println("SELECT rating + (("+count+"/2)/"+tab.getValueAt(i, 1)+")"+
-								 " FROM Спортсмены WHERE SecName ='"+ tab.getValueAt(i, 0)+"'");
+								 " FROM РЎРїРѕСЂС‚СЃРјРµРЅС‹ WHERE SecName ='"+ tab.getValueAt(i, 0)+"'");
 						 rs = BdGUI.st.executeQuery("SELECT rating + (("+count+"/2)/"+tab.getValueAt(i, 1)+")"+
-								 " FROM Спортсмены WHERE SecName ='"+ tab.getValueAt(i, 0)+"'");
+								 " FROM РЎРїРѕСЂС‚СЃРјРµРЅС‹ WHERE SecName ='"+ tab.getValueAt(i, 0)+"'");
 						 Float rating = null;
 						 if(rs.next()){
 							 rating = rs.getFloat(1);					 					 
-							 BdGUI.st.executeUpdate("UPDATE Спортсмены SET rating ="+rating+" WHERE SecName ='"+tab.getValueAt(i, 0)+"'");
+							 BdGUI.st.executeUpdate("UPDATE РЎРїРѕСЂС‚СЃРјРµРЅС‹ SET rating ="+rating+" WHERE SecName ='"+tab.getValueAt(i, 0)+"'");
 						 }
-						 rs = BdGUI.st.executeQuery("SELECT Coach,tRating FROM Спортсмены,Тренеры WHERE SecName ='"+ tab.getValueAt(i, 0)+"'");
+						 rs = BdGUI.st.executeQuery("SELECT Coach,tRating FROM РЎРїРѕСЂС‚СЃРјРµРЅС‹,РўСЂРµРЅРµСЂС‹ WHERE SecName ='"+ tab.getValueAt(i, 0)+"'");
 						 if(rs.next())
-							 BdGUI.st.executeUpdate("UPDATE Тренеры SET tRating ="+(rs.getFloat("tRating")+rating)+" WHERE idCoach ="+rs.getString("Coach"));					 
+							 BdGUI.st.executeUpdate("UPDATE РўСЂРµРЅРµСЂС‹ SET tRating ="+(rs.getFloat("tRating")+rating)+" WHERE idCoach ="+rs.getString("Coach"));					 
 					 //rs = BdGUI.st.executeQuery("SELECT ");
-					/* BdGUI.st.executeUpdate("INSERT INTO Спортсмены (rating) SELECT rating +"+count+
-							 " /"+tab.getValueAt(i, 1)+" FROM Спортсмены WHERE SecName ='"+tab.getValueAt(i, 0)+"'");*/
+					/* BdGUI.st.executeUpdate("INSERT INTO РЎРїРѕСЂС‚СЃРјРµРЅС‹ (rating) SELECT rating +"+count+
+							 " /"+tab.getValueAt(i, 1)+" FROM РЎРїРѕСЂС‚СЃРјРµРЅС‹ WHERE SecName ='"+tab.getValueAt(i, 0)+"'");*/
 					 
-					// BdGUI.st.executeUpdate("INSERT INTO протоколы (pos) VALUES ("+tab.getValueAt(i, 1)+")");
+					// BdGUI.st.executeUpdate("INSERT INTO РїСЂРѕС‚РѕРєРѕР»С‹ (pos) VALUES ("+tab.getValueAt(i, 1)+")");
 					 }					
 							frame.dispose();	
 				 }
 			} catch (SQLException e1) {
-				// TODO Автоматически созданный блок catch
+				// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 				e1.printStackTrace();
 			}
 		}
@@ -145,7 +145,7 @@ public class ProcForm extends JFrame implements MouseListener,ActionListener {
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Автоматически созданная заглушка метода
+		// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅР°СЏ Р·Р°РіР»СѓС€РєР° РјРµС‚РѕРґР°
 		
 	}
 }

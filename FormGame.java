@@ -1,4 +1,4 @@
-package guiSwing;
+п»їpackage guiSwing;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -20,26 +20,26 @@ public class FormGame extends CommonFrame implements ActionListener  {
   FormGame(boolean b) throws SQLException {
 	  edit = b;
 	  Vector<String> skill = new Vector<String>();
-	  ResultSet rs = st.executeQuery("SELECT skillName FROM Мастерство");
+	  ResultSet rs = st.executeQuery("SELECT skillName FROM РњР°СЃС‚РµСЂСЃС‚РІРѕ");
 	  while(rs.next())
 			skill.addElement(rs.getString(1));
 		jtxtCity = new JTextField(10);
 		jtxtDate = new JTextField(10);
 		jtxtDOB = new JTextField(10);
 		jtxtCount = new JTextField(10);
-		jbtnProc = new JButton("Протокол");
+		jbtnProc = new JButton("РџСЂРѕС‚РѕРєРѕР»");
 		jbtnProc.addActionListener(this); 
-		mod = new MyTableModel(new String[] {"фамилия","год рождения","участие"});
+		mod = new MyTableModel(new String[] {"С„Р°РјРёР»РёСЏ","РіРѕРґ СЂРѕР¶РґРµРЅРёСЏ","СѓС‡Р°СЃС‚РёРµ"});
 		tab.setModel(mod);
 
 		
-		JLabel jlabelName = new JLabel("Название",null,SwingConstants.RIGHT);
-		JLabel jlabelSpec = new JLabel("<html>Вид спорта </html>>",null,SwingConstants.RIGHT);
-		JLabel jlabelCity = new JLabel("Город",null,SwingConstants.RIGHT);
-		JLabel jlabelSkill = new JLabel("Рейтинг",null,SwingConstants.RIGHT);
-		JLabel jlabelDate = new JLabel("Дата",null,SwingConstants.RIGHT);
-		JLabel jlabelCount = new JLabel("Участников",null,SwingConstants.RIGHT);
-		JLabel jlabelDOB = new JLabel("год от",null,SwingConstants.RIGHT);
+		JLabel jlabelName = new JLabel("РќР°Р·РІР°РЅРёРµ",null,SwingConstants.RIGHT);
+		JLabel jlabelSpec = new JLabel("<html>Р’РёРґ СЃРїРѕСЂС‚Р° </html>>",null,SwingConstants.RIGHT);
+		JLabel jlabelCity = new JLabel("Р“РѕСЂРѕРґ",null,SwingConstants.RIGHT);
+		JLabel jlabelSkill = new JLabel("Р РµР№С‚РёРЅРі",null,SwingConstants.RIGHT);
+		JLabel jlabelDate = new JLabel("Р”Р°С‚Р°",null,SwingConstants.RIGHT);
+		JLabel jlabelCount = new JLabel("РЈС‡Р°СЃС‚РЅРёРєРѕРІ",null,SwingConstants.RIGHT);
+		JLabel jlabelDOB = new JLabel("РіРѕРґ РѕС‚",null,SwingConstants.RIGHT);
 		
 		jcbSkill = new JComboBox<String>(skill);
 	    
@@ -73,11 +73,11 @@ public class FormGame extends CommonFrame implements ActionListener  {
   
 @Override
 public void actionPerformed(ActionEvent e) {
-	if(e.getActionCommand().equals("Сохранить")){
+	if(e.getActionCommand().equals("РЎРѕС…СЂР°РЅРёС‚СЊ")){
 		if(!jtxtName.getText().equals(""))
 			try {		
 				Boolean f = true;
-				ResultSet rs = st.executeQuery("SELECT city,specializeName, skillName FROM (Соревнования s INNER JOIN Специализация spec ON s.gameSpecializ = spec.idSpec)INNER JOIN Мастерство m ON m.idSkill=s.gameSkill WHERE gameName = '"+jtxtName.getText()+"'");
+				ResultSet rs = st.executeQuery("SELECT city,specializeName, skillName FROM (РЎРѕСЂРµРІРЅРѕРІР°РЅРёСЏ s INNER JOIN РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ spec ON s.gameSpecializ = spec.idSpec)INNER JOIN РњР°СЃС‚РµСЂСЃС‚РІРѕ m ON m.idSkill=s.gameSkill WHERE gameName = '"+jtxtName.getText()+"'");
 				while(rs.next()){
 					if((rs.getString("city").equals(jtxtCity.getText()))&&(rs.getString("skillName").equals(jcbSkill.getSelectedItem().toString()))&&
 							(rs.getString("specializeName").equals(jcbSpec.getSelectedItem().toString()))){
@@ -92,17 +92,17 @@ public void actionPerformed(ActionEvent e) {
 				if(f){
 					if(!edit){
 						System.out.println(jtxtCount.getText());
-						st.executeUpdate("INSERT INTO Соревнования (gameName, gameDate,city,gameSkill,gameSpecializ,gameMembers,gameDateAt) "+
+						st.executeUpdate("INSERT INTO РЎРѕСЂРµРІРЅРѕРІР°РЅРёСЏ (gameName, gameDate,city,gameSkill,gameSpecializ,gameMembers,gameDateAt) "+
 							"SELECT'"+jtxtName.getText()+"',"+getDate(jtxtDate.getText())+",'"+jtxtCity.getText()+
-							"',idSkill,idSpec,"+count+",+"+dateAt+" FROM Мастерство,Специализация"+" WHERE specializeName ='"+jcbSpec.getSelectedItem().toString()+
+							"',idSkill,idSpec,"+count+",+"+dateAt+" FROM РњР°СЃС‚РµСЂСЃС‚РІРѕ,РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ"+" WHERE specializeName ='"+jcbSpec.getSelectedItem().toString()+
 							"' AND skillName='"+jcbSkill.getSelectedItem().toString()+"'");
 					}else{
 						String skill = null,spec = null;
-						rs = st.executeQuery("SELECT idSkill FROM Мастерство WHERE skillName='"+jcbSkill.getSelectedItem().toString()+"'");
+						rs = st.executeQuery("SELECT idSkill FROM РњР°СЃС‚РµСЂСЃС‚РІРѕ WHERE skillName='"+jcbSkill.getSelectedItem().toString()+"'");
 						if(rs.next()) skill = rs.getString(1);
-						rs = st.executeQuery("SELECT idSpec FROM Специализация WHERE specializeName='"+jcbSpec.getSelectedItem().toString()+"'");
+						rs = st.executeQuery("SELECT idSpec FROM РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ WHERE specializeName='"+jcbSpec.getSelectedItem().toString()+"'");
 						if(rs.next()) spec = rs.getString(1);
-						st.executeUpdate("UPDATE Соревнования SET gameName='"+jtxtName.getText()+"', gameDate="+getDate(jtxtDate.getText())+
+						st.executeUpdate("UPDATE РЎРѕСЂРµРІРЅРѕРІР°РЅРёСЏ SET gameName='"+jtxtName.getText()+"', gameDate="+getDate(jtxtDate.getText())+
 								",city='"+jtxtCity.getText()+"',gameSkill="+skill+",gameSpecializ="+spec+",gameMembers="+count+",gameDateAt="+dateAt+" WHERE idGame ="+UpdGame.editGame);
 					}
 					frame1.dispose();
@@ -110,11 +110,11 @@ public void actionPerformed(ActionEvent e) {
 					BdGUI.jlblOk.setVisible(true);
 				}
 			} catch (SQLException e1) {
-				// TODO Автоматически созданный блок catch
+				// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 				e1.printStackTrace();			
 			}
 	}
-	if(e.getActionCommand().equals("Протокол")){
+	if(e.getActionCommand().equals("РџСЂРѕС‚РѕРєРѕР»")){
 		ProcForm form =new ProcForm(jtxtName.getText(),jtxtCount.getText());
 		for(int i=0;i<mod.getRowCount();i++)
 			if((boolean) tab.getValueAt(i, 2)){
@@ -122,4 +122,4 @@ public void actionPerformed(ActionEvent e) {
 			}		
 	}
 }
-}//класс
+}//РєР»Р°СЃСЃ

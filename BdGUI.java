@@ -1,4 +1,4 @@
-package guiSwing;
+п»їpackage guiSwing;
 
 import java.awt.*;   
 import java.awt.event.*;
@@ -34,7 +34,7 @@ public class BdGUI extends JFrame implements ActionListener,MouseListener  {
    
     GridBagLayout gbag = new GridBagLayout(); 
     GridBagConstraints gbc = new GridBagConstraints(); 
-    jlblOk = new JLabel("<html><u><font color="+"red"+">Запись сохранена",null,SwingConstants.CENTER);
+    jlblOk = new JLabel("<html><u><font color="+"red"+">Р—Р°РїРёСЃСЊ СЃРѕС…СЂР°РЅРµРЅР°",null,SwingConstants.CENTER);
  
     jfrm.getContentPane().setLayout(gbag);     
   
@@ -42,12 +42,12 @@ public class BdGUI extends JFrame implements ActionListener,MouseListener  {
    
     jfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
   
-    JButton jbtnIns = new JButton("Добавить спортсмена"); 
-    JButton jbtnSch = new JButton("Найти");
-    JButton jbtnInsCoach = new JButton("Добавить тренера");
-    JButton jbtnInsGame = new JButton("Добавить соревнование");
-    JButton jbtnRating = new JButton("Посмотреть рейтинг");
-    JButton jbtnTraum = new JButton("Травмы");
+    JButton jbtnIns = new JButton("Р”РѕР±Р°РІРёС‚СЊ СЃРїРѕСЂС‚СЃРјРµРЅР°"); 
+    JButton jbtnSch = new JButton("РќР°Р№С‚Рё");
+    JButton jbtnInsCoach = new JButton("Р”РѕР±Р°РІРёС‚СЊ С‚СЂРµРЅРµСЂР°");
+    JButton jbtnInsGame = new JButton("Р”РѕР±Р°РІРёС‚СЊ СЃРѕСЂРµРІРЅРѕРІР°РЅРёРµ");
+    JButton jbtnRating = new JButton("РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЂРµР№С‚РёРЅРі");
+    JButton jbtnTraum = new JButton("РўСЂР°РІРјС‹");
     
     jbtnIns.addActionListener(this);
     jbtnSch.addActionListener(this);
@@ -78,32 +78,32 @@ public class BdGUI extends JFrame implements ActionListener,MouseListener  {
 	tab1.setPreferredScrollableViewportSize(new Dimension(tab1.getPreferredScrollableViewportSize().width,5 * tab1.getRowHeight()));
 	tab2.setPreferredScrollableViewportSize(new Dimension(tab2.getPreferredScrollableViewportSize().width,5 * tab2.getRowHeight()));
 	tab3.setPreferredScrollableViewportSize(new Dimension(tab3.getPreferredScrollableViewportSize().width,5 * tab3.getRowHeight()));
-	tabPane.addTab("спортсмены", jscrPane);
-	tabPane.addTab("тренеры", jscrPane2);
-	tabPane.addTab("соревнования", jscrPane3);
+	tabPane.addTab("СЃРїРѕСЂС‚СЃРјРµРЅС‹", jscrPane);
+	tabPane.addTab("С‚СЂРµРЅРµСЂС‹", jscrPane2);
+	tabPane.addTab("СЃРѕСЂРµРІРЅРѕРІР°РЅРёСЏ", jscrPane3);
 
     gbc.fill = GridBagConstraints.BOTH;
     gbc.weightx = 0.0; 
     gbc.insets = new Insets(6, 6, 6, 0); 
     
     gbc.gridx = 0; 
-    gbc.gridy = 1; //заносим кнопку добавить
+    gbc.gridy = 1; //Р·Р°РЅРѕСЃРёРј РєРЅРѕРїРєСѓ РґРѕР±Р°РІРёС‚СЊ
     gbag.setConstraints(jbtnTraum, gbc);
     gbc.gridx = 0; 
-    gbc.gridy = 0; //заносим кнопку добавить
+    gbc.gridy = 0; //Р·Р°РЅРѕСЃРёРј РєРЅРѕРїРєСѓ РґРѕР±Р°РІРёС‚СЊ
     gbag.setConstraints(jbtnRating, gbc); 
     gbc.gridx = 0; 
-    gbc.gridy = 2; //заносим кнопку добавить
+    gbc.gridy = 2; //Р·Р°РЅРѕСЃРёРј РєРЅРѕРїРєСѓ РґРѕР±Р°РІРёС‚СЊ
     gbag.setConstraints(jbtnIns, gbc); 
     gbc.gridx = 0;
-    gbc.gridy = 3;//заносим поле для ввода
+    gbc.gridy = 3;//Р·Р°РЅРѕСЃРёРј РїРѕР»Рµ РґР»СЏ РІРІРѕРґР°
     gbag.setConstraints(jbtnInsCoach, gbc);
     gbc.gridx = 0;
-    gbc.gridy = 4;//заносим поле для ввода
+    gbc.gridy = 4;//Р·Р°РЅРѕСЃРёРј РїРѕР»Рµ РґР»СЏ РІРІРѕРґР°
     gbag.setConstraints(jbtnInsGame, gbc);
     
     gbc.gridx = 0;
-    gbc.gridy = 6;//заносим поле для ввода
+    gbc.gridy = 6;//Р·Р°РЅРѕСЃРёРј РїРѕР»Рµ РґР»СЏ РІРІРѕРґР°
     gbag.setConstraints(jtxt, gbc);
     
     gbc.gridx = 1;
@@ -151,7 +151,7 @@ public class BdGUI extends JFrame implements ActionListener,MouseListener  {
 			new UpdSp(tab.getValueAt(row, 1).toString(),tab.getValueAt(row, 2).toString(),tab.getValueAt(row, 3).toString()
 					  ,tab.getValueAt(row, 0).toString());
 		  } catch (SQLException e1) {
-			// TODO Автоматически созданный блок catch
+			// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 			e1.printStackTrace();
 		  }
 		  if(e.getComponent().equals(tab3))
@@ -159,7 +159,7 @@ public class BdGUI extends JFrame implements ActionListener,MouseListener  {
 				new UpdGame(tab.getValueAt(row, 0).toString(),tab.getValueAt(row, 1).toString(),
 						tab.getValueAt(row, 2).toString(),tab.getValueAt(row, 3).toString());
 			  } catch (SQLException e1) {
-				// TODO Автоматически созданный блок catch
+				// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 				e1.printStackTrace();
 			  } 
 		  if(e.getComponent().equals(tab2))
@@ -167,7 +167,7 @@ public class BdGUI extends JFrame implements ActionListener,MouseListener  {
 				new UpdCoach(tab.getValueAt(row, 1).toString(),tab.getValueAt(row, 2).toString(),
 						tab.getValueAt(row, 3).toString(),tab.getValueAt(row, 0).toString());
 			  } catch (SQLException e1) {
-				// TODO Автоматически созданный блок catch
+				// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 				e1.printStackTrace();
 			  }
   }
@@ -175,43 +175,43 @@ public class BdGUI extends JFrame implements ActionListener,MouseListener  {
 
 @Override
 public void actionPerformed(ActionEvent e) {
-	if(e.getActionCommand().equals("Добавить тренера")){ 
+	if(e.getActionCommand().equals("Р”РѕР±Р°РІРёС‚СЊ С‚СЂРµРЅРµСЂР°")){ 
 		try {
 			new FormCoach(false);
 		} catch (SQLException e1) {
-			// TODO Автоматически созданный блок catch
+			// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 			e1.printStackTrace();
 		}
 	}
-	if(e.getActionCommand().equals("Посмотреть рейтинг")){ 
+	if(e.getActionCommand().equals("РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЂРµР№С‚РёРЅРі")){ 
 			try {
 				new FormRating();
 			} catch (SQLException e1) {
-				// TODO Автоматически созданный блок catch
+				// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 				e1.printStackTrace();
 			}
 	}
-	if(e.getActionCommand().equals("Травмы")){ 		
+	if(e.getActionCommand().equals("РўСЂР°РІРјС‹")){ 		
 			new TraumForm();		
 	}
-	if(e.getActionCommand().equals("Добавить соревнование")){ 
+	if(e.getActionCommand().equals("Р”РѕР±Р°РІРёС‚СЊ СЃРѕСЂРµРІРЅРѕРІР°РЅРёРµ")){ 
 		try {
 			new FormGame(false);
 		} catch (SQLException e1) {
-			// TODO Автоматически созданный блок catch
+			// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 			e1.printStackTrace();
 		}
 	}
-	if(e.getActionCommand().equals("Добавить спортсмена")){		
+	if(e.getActionCommand().equals("Р”РѕР±Р°РІРёС‚СЊ СЃРїРѕСЂС‚СЃРјРµРЅР°")){		
 		try {
 			new FormSp(false);
 		} catch (SQLException e1) {
-			// TODO Автоматически созданный блок catch
+			// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 			e1.printStackTrace();
 		}
 	}	
-		if(e.getActionCommand().equals("Найти")){
-		try {//поиск 
+		if(e.getActionCommand().equals("РќР°Р№С‚Рё")){
+		try {//РїРѕРёСЃРє 
 			String data = jtxt.getText();
 			System.out.println(data);
 			getSpDate(data);
@@ -221,7 +221,7 @@ public void actionPerformed(ActionEvent e) {
 			jfrm.revalidate();
 			jfrm.repaint();
 		} catch (SQLException e1) {
-			// TODO Автоматически созданный блок catch
+			// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 			e1.printStackTrace();
 		}
 	}
@@ -229,19 +229,19 @@ public void actionPerformed(ActionEvent e) {
 
 
 void getSpDate(String date) throws SQLException{
-	//date = "Спортсмены";
-	ResultSet rs = st.executeQuery("SELECT SecName, spName, specializeName, spDOB FROM Спортсмены s INNER JOIN Специализация spec ON"+
+	//date = "РЎРїРѕСЂС‚СЃРјРµРЅС‹";
+	ResultSet rs = st.executeQuery("SELECT SecName, spName, specializeName, spDOB FROM РЎРїРѕСЂС‚СЃРјРµРЅС‹ s INNER JOIN РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ spec ON"+
 	" s.spSpecializ = spec.idSpec WHERE secName LIKE '%"+date+"%' OR spName LIKE '%"+date+"%' OR spDOB LIKE '%"+
 			date+"%' OR specializeName LIKE '%"+date+"%'");	
-	rs.last();//вычисление количества записей
+	rs.last();//РІС‹С‡РёСЃР»РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° Р·Р°РїРёСЃРµР№
 	int resulSetSize = rs.getRow();
 	rs.beforeFirst(); 
 	System.out.println(resulSetSize);
 	String[] columnNames = {
-			"Вид спорта",
-			"Фамилия",
-			"Имя",
-			"дата рождения"			
+			"Р’РёРґ СЃРїРѕСЂС‚Р°",
+			"Р¤Р°РјРёР»РёСЏ",
+			"РРјСЏ",
+			"РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ"			
 			};
 	String[][] data = new String[resulSetSize][4];
 	tab1.setModel(new javax.swing.table.DefaultTableModel(data, columnNames));
@@ -256,18 +256,18 @@ void getSpDate(String date) throws SQLException{
 }
 	
 	void getCoachDate(String date) throws SQLException{
-		ResultSet rs = st.executeQuery("SELECT cSecName, cName, specializeName, cOtch FROM Тренеры t INNER JOIN Специализация s ON"+
+		ResultSet rs = st.executeQuery("SELECT cSecName, cName, specializeName, cOtch FROM РўСЂРµРЅРµСЂС‹ t INNER JOIN РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ s ON"+
 		" t.specializ = s.idSpec WHERE cSecName LIKE '%"+date+"%' OR cName LIKE '%"+date+"%' OR cOtch LIKE '%"+
 				date+"%' OR specializeName LIKE '%"+date+"%' ");		
-		rs.last();//вычисление количества записей
+		rs.last();//РІС‹С‡РёСЃР»РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° Р·Р°РїРёСЃРµР№
 		int resulSetSize = rs.getRow();
 		rs.beforeFirst(); 
 		System.out.println(resulSetSize);
 		String[] columnNames = {
-				"Вид спорта",
-				"Фамилия",
-				"Имя",
-				"Отчество"				
+				"Р’РёРґ СЃРїРѕСЂС‚Р°",
+				"Р¤Р°РјРёР»РёСЏ",
+				"РРјСЏ",
+				"РћС‚С‡РµСЃС‚РІРѕ"				
 				};
 		String[][] data = new String[resulSetSize][4];
 		tab2.setModel(new javax.swing.table.DefaultTableModel(data, columnNames));
@@ -282,19 +282,19 @@ void getSpDate(String date) throws SQLException{
 
 }
 	void getGameDate(String date) throws SQLException{
-		//date = "Спортсмены";
-		ResultSet rs = st.executeQuery("SELECT gameName, city, gameDate, specializeName FROM Соревнования s INNER JOIN Специализация spec ON"+
+		//date = "РЎРїРѕСЂС‚СЃРјРµРЅС‹";
+		ResultSet rs = st.executeQuery("SELECT gameName, city, gameDate, specializeName FROM РЎРѕСЂРµРІРЅРѕРІР°РЅРёСЏ s INNER JOIN РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ spec ON"+
 		" s.gameSpecializ = spec.idSpec WHERE gameName LIKE '%"+date+"%' OR city LIKE '%"+date+"%' OR gameDate LIKE '%"
 				+date+"%' OR specializeName LIKE '%"+date+"%'");		
-		rs.last();//вычисление количества записей
+		rs.last();//РІС‹С‡РёСЃР»РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° Р·Р°РїРёСЃРµР№
 		int resulSetSize = rs.getRow();
 		rs.beforeFirst(); 
 		System.out.println(resulSetSize);
 		String[] columnNames = {
-				"Вид спорта",
-				"Название",
-				"место проведения",
-				"дата проведения",
+				"Р’РёРґ СЃРїРѕСЂС‚Р°",
+				"РќР°Р·РІР°РЅРёРµ",
+				"РјРµСЃС‚Рѕ РїСЂРѕРІРµРґРµРЅРёСЏ",
+				"РґР°С‚Р° РїСЂРѕРІРµРґРµРЅРёСЏ",
 				};
 		String[][] data = new String[resulSetSize][4];
 		tab3.setModel(new javax.swing.table.DefaultTableModel(data, columnNames));
@@ -309,17 +309,17 @@ void getSpDate(String date) throws SQLException{
 }
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Автоматически созданная заглушка метода
+		// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅР°СЏ Р·Р°РіР»СѓС€РєР° РјРµС‚РѕРґР°
 		
 	}
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Автоматически созданная заглушка метода
+		// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅР°СЏ Р·Р°РіР»СѓС€РєР° РјРµС‚РѕРґР°
 		
 	}
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Автоматически созданная заглушка метода
+		// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅР°СЏ Р·Р°РіР»СѓС€РєР° РјРµС‚РѕРґР°
 		
 	}
 	
@@ -330,7 +330,7 @@ void getSpDate(String date) throws SQLException{
 	
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Автоматически созданная заглушка метода
+		// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅР°СЏ Р·Р°РіР»СѓС€РєР° РјРµС‚РѕРґР°
 		
 	}
 }

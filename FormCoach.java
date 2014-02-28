@@ -1,4 +1,4 @@
-package guiSwing;
+п»їpackage guiSwing;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -18,12 +18,12 @@ public class FormCoach extends CommonFrame implements ActionListener  {
 		jtxtSecName = new JTextField(10);
 		jtxtOtch = new JTextField(10);
 		
-		JLabel jlabelName = new JLabel("Имя",null,SwingConstants.RIGHT);
-		JLabel jlabelSecName = new JLabel("Фамилия",null,SwingConstants.RIGHT);
-		JLabel jlabelOtch = new JLabel("Отчество",null,SwingConstants.RIGHT);
-		JLabel jlabelSpec = new JLabel("<html>Вид спорта </html>>",null,SwingConstants.RIGHT);
+		JLabel jlabelName = new JLabel("РРјСЏ",null,SwingConstants.RIGHT);
+		JLabel jlabelSecName = new JLabel("Р¤Р°РјРёР»РёСЏ",null,SwingConstants.RIGHT);
+		JLabel jlabelOtch = new JLabel("РћС‚С‡РµСЃС‚РІРѕ",null,SwingConstants.RIGHT);
+		JLabel jlabelSpec = new JLabel("<html>Р’РёРґ СЃРїРѕСЂС‚Р° </html>>",null,SwingConstants.RIGHT);
 		
-		mod = new DefaultTableModel(new String[] {"Фамилия","имя","дата рождения"},0);
+		mod = new DefaultTableModel(new String[] {"Р¤Р°РјРёР»РёСЏ","РёРјСЏ","РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ"},0);
 		tab.setModel(mod);		
 		
 		packPanel(jlabelName,0,0);
@@ -50,11 +50,11 @@ public class FormCoach extends CommonFrame implements ActionListener  {
   
 @Override
 public void actionPerformed(ActionEvent e) {
-	if(e.getActionCommand().equals("Сохранить")){
+	if(e.getActionCommand().equals("РЎРѕС…СЂР°РЅРёС‚СЊ")){
 		if(!jtxtSecName.getText().equals(""))
 			try {
 				Boolean f = true;
-				ResultSet rs = st.executeQuery("SELECT CName,COtch,specializeName FROM Тренеры t INNER JOIN Специализация spec ON t.Specializ = spec.idSpec WHERE CSecName = '"+jtxtSecName.getText()+"'");
+				ResultSet rs = st.executeQuery("SELECT CName,COtch,specializeName FROM РўСЂРµРЅРµСЂС‹ t INNER JOIN РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ spec ON t.Specializ = spec.idSpec WHERE CSecName = '"+jtxtSecName.getText()+"'");
 				while(rs.next()){
 					if((rs.getString("cName").equals(jtxtName.getText()))&&(rs.getString("cOtch").equals(jtxtOtch.getText()))&&
 							(rs.getString("specializeName").equals(jcbSpec.getSelectedItem().toString()))){
@@ -64,14 +64,14 @@ public void actionPerformed(ActionEvent e) {
 					}else f = true;}
 				if(f){
 					if(!edit)
-						st.executeUpdate("INSERT INTO Тренеры (CSecName, CName,COtch,specializ) "+
+						st.executeUpdate("INSERT INTO РўСЂРµРЅРµСЂС‹ (CSecName, CName,COtch,specializ) "+
 								"SELECT'"+jtxtSecName.getText()+"','"+jtxtName.getText()+"','"+jtxtOtch.getText()+
-								"',idSpec FROM Специализация WHERE specializeName ='"+jcbSpec.getSelectedItem().toString()+"'");
+								"',idSpec FROM РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ WHERE specializeName ='"+jcbSpec.getSelectedItem().toString()+"'");
 					else{
 						String spec = null;
-						rs = st.executeQuery("SELECT idSpec FROM Специализация WHERE specializeName ='"+jcbSpec.getSelectedItem().toString()+"'");
+						rs = st.executeQuery("SELECT idSpec FROM РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ WHERE specializeName ='"+jcbSpec.getSelectedItem().toString()+"'");
 						if(rs.next()) spec = rs.getString(1);
-						st.executeUpdate("UPDATE Тренеры SET CSecName ='"+jtxtSecName.getText()+"', CName='"+jtxtName.getText()+
+						st.executeUpdate("UPDATE РўСЂРµРЅРµСЂС‹ SET CSecName ='"+jtxtSecName.getText()+"', CName='"+jtxtName.getText()+
 								"',COtch='"+jtxtOtch.getText()+"',specializ="+spec+" WHERE idCoach="+UpdCoach.editCoach);
 					}
 				frame1.dispose();
@@ -79,9 +79,9 @@ public void actionPerformed(ActionEvent e) {
 				BdGUI.jlblOk.setVisible(true);
 				}
 			} catch (SQLException e1) {
-				// TODO Автоматически созданный блок catch
+				// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 				e1.printStackTrace();			
 			}
 	}
 }
-}//класс
+}//РєР»Р°СЃСЃ

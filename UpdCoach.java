@@ -1,4 +1,4 @@
-package guiSwing;
+п»їpackage guiSwing;
 
 import java.sql.*;
 import java.util.Vector;
@@ -13,13 +13,13 @@ public class UpdCoach {
 		form.jtxtSecName.setText(secName);
 		form.jtxtOtch.setText(otch);
 		form.jcbSpec.setSelectedItem(spec);		
-		ResultSet rs = BdGUI.st.executeQuery("SELECT idCoach,tRating FROM Тренеры WHERE CSecName='"+secName+"' AND cName ='"+name+
+		ResultSet rs = BdGUI.st.executeQuery("SELECT idCoach,tRating FROM РўСЂРµРЅРµСЂС‹ WHERE CSecName='"+secName+"' AND cName ='"+name+
 				"' AND cOtch='"+otch+"'");
 		if(rs.next()){
 			form.jtxtRating.setText(rs.getString("tRating"));
 			editCoach = rs.getInt("idCoach");
 		}
-		rs = BdGUI.st.executeQuery("SELECT SecName,spname,spDOB FROM Спортсмены s INNER JOIN Тренеры t ON s.Coach =t.idCoach"+
+		rs = BdGUI.st.executeQuery("SELECT SecName,spname,spDOB FROM РЎРїРѕСЂС‚СЃРјРµРЅС‹ s INNER JOIN РўСЂРµРЅРµСЂС‹ t ON s.Coach =t.idCoach"+
 				" WHERE CSecName='"+form.jtxtSecName.getText()+"' AND specializ=spSpecializ");
 				while(rs.next()){
 					System.out.println("adg");

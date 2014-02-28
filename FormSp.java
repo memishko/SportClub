@@ -1,4 +1,4 @@
-package guiSwing;
+п»їpackage guiSwing;
 
 import java.awt.Dimension;
 import java.awt.event.*;
@@ -25,11 +25,11 @@ public class FormSp extends CommonFrame implements ActionListener  {
   FormSp(boolean b) throws SQLException{ 	 
 	  upd = b;	  	  
 	  Vector<String> Coachs = new Vector<String>();
-	  ResultSet rs = st.executeQuery("SELECT CSecName FROM Тренеры");
+	  ResultSet rs = st.executeQuery("SELECT CSecName FROM РўСЂРµРЅРµСЂС‹");
 	  while(rs.next())
 			Coachs.addElement(rs.getString(1));	  
 	  Vector<String> skill = new Vector<String>();
-	  rs = st.executeQuery("SELECT SkillName FROM Мастерство");
+	  rs = st.executeQuery("SELECT SkillName FROM РњР°СЃС‚РµСЂСЃС‚РІРѕ");
 	  while(rs.next())
 			skill.addElement(rs.getString(1));
 	  
@@ -37,17 +37,17 @@ public class FormSp extends CommonFrame implements ActionListener  {
 		jtxtOtch = new JTextField(10);
 		jtxtDOB = new JTextField(10);
 		jtxtChange = new JTextField(10);		
-		mod = new DefaultTableModel(new String[] {"соревнование","место"},0);
+		mod = new DefaultTableModel(new String[] {"СЃРѕСЂРµРІРЅРѕРІР°РЅРёРµ","РјРµСЃС‚Рѕ"},0);
 		tab.setModel(mod);
 		
-		JLabel jlabelName = new JLabel("Имя",null,SwingConstants.RIGHT);
-		JLabel jlabelSecName = new JLabel("Фамилия",null,SwingConstants.RIGHT);
-		JLabel jlabelOtch = new JLabel("Отчество",null,SwingConstants.RIGHT);
+		JLabel jlabelName = new JLabel("РРјСЏ",null,SwingConstants.RIGHT);
+		JLabel jlabelSecName = new JLabel("Р¤Р°РјРёР»РёСЏ",null,SwingConstants.RIGHT);
+		JLabel jlabelOtch = new JLabel("РћС‚С‡РµСЃС‚РІРѕ",null,SwingConstants.RIGHT);
 		JLabel jlabelDOB = new JLabel("DOB",null,SwingConstants.RIGHT);
-		JLabel jlabelCoach = new JLabel("Тренер",null,SwingConstants.RIGHT);
-		JLabel jlabelSpec = new JLabel("<html>Вид спорта </html>>",null,SwingConstants.RIGHT);
-		JLabel jlabelSKill = new JLabel("Квалификация",null,SwingConstants.RIGHT);
-		jlabelChange = new JLabel("дата смены",null,SwingConstants.RIGHT);
+		JLabel jlabelCoach = new JLabel("РўСЂРµРЅРµСЂ",null,SwingConstants.RIGHT);
+		JLabel jlabelSpec = new JLabel("<html>Р’РёРґ СЃРїРѕСЂС‚Р° </html>>",null,SwingConstants.RIGHT);
+		JLabel jlabelSKill = new JLabel("РљРІР°Р»РёС„РёРєР°С†РёСЏ",null,SwingConstants.RIGHT);
+		jlabelChange = new JLabel("РґР°С‚Р° СЃРјРµРЅС‹",null,SwingConstants.RIGHT);
 		
 		
 		
@@ -57,7 +57,7 @@ public class FormSp extends CommonFrame implements ActionListener  {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Автоматически созданная заглушка метода
+				// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅР°СЏ Р·Р°РіР»СѓС€РєР° РјРµС‚РѕРґР°
 				if((upd)&&(jcbCoach.getModel().getSize()!=0)){					
 						   if(jcbCoach.getSelectedItem().equals(lateCoach)){
 							   jtxtChange.setVisible(false);
@@ -73,7 +73,7 @@ public class FormSp extends CommonFrame implements ActionListener  {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					ResultSet rs = st.executeQuery("SELECT CSecName FROM тренеры t INNER JOIN Специализация spec ON t.specializ=spec.idSpec WHERE"+
+					ResultSet rs = st.executeQuery("SELECT CSecName FROM С‚СЂРµРЅРµСЂС‹ t INNER JOIN РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ spec ON t.specializ=spec.idSpec WHERE"+
 				" specializeName ='"+jcbSpec.getSelectedItem().toString()+"'");
 				jcbCoach.removeAllItems();
 				//Vector<String> spec = new Vector<String>();
@@ -81,7 +81,7 @@ public class FormSp extends CommonFrame implements ActionListener  {
 					jcbCoach.addItem(rs.getString(1));
 				}
 				} catch (SQLException e1) {
-					// TODO Автоматически созданный блок catch
+					// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 					e1.printStackTrace();
 				}				
 			}			
@@ -128,9 +128,9 @@ public void actionPerformed(ActionEvent e) {
 	/*Object objSourse = e.getSource();
 	if(objSourse instanceof JComboBox ){
 		JComboBox<?> comboBox = (JComboBox<?>) objSourse;
-		//if(comboBox.equals("футбол")){
+		//if(comboBox.equals("С„СѓС‚Р±РѕР»")){
 		try {
-			ResultSet rs = st.executeQuery("SELECT CSecName FROM тренеры t INNER JOIN Специализация spec ON t.specializ=spec.idSpec WHERE"+
+			ResultSet rs = st.executeQuery("SELECT CSecName FROM С‚СЂРµРЅРµСЂС‹ t INNER JOIN РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ spec ON t.specializ=spec.idSpec WHERE"+
 		" specializeName ='"+comboBox.getSelectedItem().toString()+"'");
 		jcbCoach.removeAllItems();
 		//Vector<String> spec = new Vector<String>();
@@ -138,16 +138,16 @@ public void actionPerformed(ActionEvent e) {
 			jcbCoach.addItem(rs.getString(1));
 		}
 		} catch (SQLException e1) {
-			// TODO Автоматически созданный блок catch
+			// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 			e1.printStackTrace();
 		}
 	}*/
 	
-	if(e.getActionCommand().equals("Сохранить")){	
+	if(e.getActionCommand().equals("РЎРѕС…СЂР°РЅРёС‚СЊ")){	
 		if(!jtxtSecName.getText().equals(""))
 			try {				
 					Boolean f = true;
-					ResultSet rs = st.executeQuery("SELECT spName,Otch,specializeName,CSecName,skillName FROM ((Спортсмены s INNER JOIN Специализация spec ON s.spSpecializ = spec.idSpec)INNER JOIN Мастерство m ON m.idSkill = s.Skill)INNER JOIN Тренеры t ON t.idCoach=s.Coach  WHERE SecName = '"+jtxtSecName.getText()+"'");
+					ResultSet rs = st.executeQuery("SELECT spName,Otch,specializeName,CSecName,skillName FROM ((РЎРїРѕСЂС‚СЃРјРµРЅС‹ s INNER JOIN РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ spec ON s.spSpecializ = spec.idSpec)INNER JOIN РњР°СЃС‚РµСЂСЃС‚РІРѕ m ON m.idSkill = s.Skill)INNER JOIN РўСЂРµРЅРµСЂС‹ t ON t.idCoach=s.Coach  WHERE SecName = '"+jtxtSecName.getText()+"'");
 					while(rs.next())
 						if((rs.getString("spName").equals(jtxtName.getText()))&&(rs.getString("Otch").equals(jtxtOtch.getText()))&&
 								(rs.getString("specializeName").equals(jcbSpec.getSelectedItem().toString()))&&(rs.getString("CSecName").equals(jcbCoach.getSelectedItem().toString()))
@@ -159,35 +159,35 @@ public void actionPerformed(ActionEvent e) {
 					//String DOB=jtxtDOB.getText();					//if(DOB.trim().equals("")) DOB = "null";	
 					if(f){
 						if(!upd){
-							st.executeUpdate("INSERT INTO Спортсмены (SecName, spName,Otch,spSpecializ,Coach,spDOB,Skill) "+
+							st.executeUpdate("INSERT INTO РЎРїРѕСЂС‚СЃРјРµРЅС‹ (SecName, spName,Otch,spSpecializ,Coach,spDOB,Skill) "+
 									"SELECT'"+jtxtSecName.getText()+"','"+jtxtName.getText()+"','"+jtxtOtch.getText()+
-									"',idSpec,idCoach,"+getDate(jtxtDOB.getText())+" ,idSkill FROM Специализация,Тренеры,Мастерство WHERE"+
+									"',idSpec,idCoach,"+getDate(jtxtDOB.getText())+" ,idSkill FROM РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ,РўСЂРµРЅРµСЂС‹,РњР°СЃС‚РµСЂСЃС‚РІРѕ WHERE"+
 									" specializeName ='"+jcbSpec.getSelectedItem().toString()+"' AND SkillName ='"+jcbSkill.getSelectedItem().toString()+
 									"' AND CSecName = '"+jcbCoach.getSelectedItem().toString()+"'");
-							rs = st.executeQuery("select top 1 * from Спортсмены order by idS desc");
+							rs = st.executeQuery("select top 1 * from РЎРїРѕСЂС‚СЃРјРµРЅС‹ order by idS desc");
 							if(rs.next())
-								st.executeUpdate("INSERT INTO переходы (idSp,idCoachNew,dateSup) SELECT "+rs.getString("idS")+",idCoach,Date()"+
-										" FROM тренеры WHERE CSecName='"+jcbCoach.getSelectedItem().toString()+"'");
+								st.executeUpdate("INSERT INTO РїРµСЂРµС…РѕРґС‹ (idSp,idCoachNew,dateSup) SELECT "+rs.getString("idS")+",idCoach,Date()"+
+										" FROM С‚СЂРµРЅРµСЂС‹ WHERE CSecName='"+jcbCoach.getSelectedItem().toString()+"'");
 						}
 						else{
-							//добавление перехода к др тренеру если есть
+							//РґРѕР±Р°РІР»РµРЅРёРµ РїРµСЂРµС…РѕРґР° Рє РґСЂ С‚СЂРµРЅРµСЂСѓ РµСЃР»Рё РµСЃС‚СЊ
 							if(!lateCoach.equals(jcbCoach.getSelectedItem().toString()))
-								st.executeUpdate("INSERT INTO переходы (idSp,idCoachNew,dateSup) SELECT idS,idCoach,"+getDate(jtxtChange.getText())
-								+" FROM "+" Спортсмены,Тренеры WHERE idS="+UpdSp.editSp+" AND CSecName='"+jcbCoach.getSelectedItem().toString()+"'");
-							/*rs = st.executeQuery("SELECT specializeName,skillName,CSecName FROM ((Спортсмены s INNER JOIN Тренеры t ON"+
-						" t.idCoach=s.Coach)INNER JOIN Мастерство m ON m.idSkill = Skill)INNER JOIN Специализация spec ON "+
+								st.executeUpdate("INSERT INTO РїРµСЂРµС…РѕРґС‹ (idSp,idCoachNew,dateSup) SELECT idS,idCoach,"+getDate(jtxtChange.getText())
+								+" FROM "+" РЎРїРѕСЂС‚СЃРјРµРЅС‹,РўСЂРµРЅРµСЂС‹ WHERE idS="+UpdSp.editSp+" AND CSecName='"+jcbCoach.getSelectedItem().toString()+"'");
+							/*rs = st.executeQuery("SELECT specializeName,skillName,CSecName FROM ((РЎРїРѕСЂС‚СЃРјРµРЅС‹ s INNER JOIN РўСЂРµРЅРµСЂС‹ t ON"+
+						" t.idCoach=s.Coach)INNER JOIN РњР°СЃС‚РµСЂСЃС‚РІРѕ m ON m.idSkill = Skill)INNER JOIN РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ spec ON "+
 									" spec.idSpec = spSpecializ WHERE idS="+UpdSp.editSp);*/
 							String spec = null,skill = null,coach = null;
-							rs= st.executeQuery("SELECT idSpec FROM Специализация WHERE specializeName='"+
+							rs= st.executeQuery("SELECT idSpec FROM РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ WHERE specializeName='"+
 									jcbSpec.getSelectedItem().toString()+"'");
 							if(rs.next()) spec = rs.getString(1);
-							rs = st.executeQuery("SELECT idSkill FROM Мастерство WHERE skillName='"+
+							rs = st.executeQuery("SELECT idSkill FROM РњР°СЃС‚РµСЂСЃС‚РІРѕ WHERE skillName='"+
 									jcbSkill.getSelectedItem().toString()+"'");
 							if(rs.next()) skill = rs.getString(1);
-							rs = st.executeQuery("SELECT idCoach FROM Тренеры WHERE CSecName='"+
+							rs = st.executeQuery("SELECT idCoach FROM РўСЂРµРЅРµСЂС‹ WHERE CSecName='"+
 									jcbCoach.getSelectedItem().toString()+"'");
 							if(rs.next()) coach = rs.getString(1);
-							st.executeUpdate("UPDATE Спортсмены SET SecName='"+jtxtSecName.getText()+"', spName='"+jtxtName.getText()+
+							st.executeUpdate("UPDATE РЎРїРѕСЂС‚СЃРјРµРЅС‹ SET SecName='"+jtxtSecName.getText()+"', spName='"+jtxtName.getText()+
 									"',Otch='"+jtxtOtch.getText()+"',spSpecializ="+spec+",Coach="+coach+",spDOB="+getDate(jtxtDOB.getText())+
 									",Skill="+skill+" WHERE idS = "+UpdSp.editSp);
 						}
@@ -195,9 +195,9 @@ public void actionPerformed(ActionEvent e) {
 						System.out.println("g"+"jtxtName.getText())"+"g");	
 					}
 			} catch (SQLException e1) {
-				// TODO Автоматически созданный блок catch
+				// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 				e1.printStackTrace();			
 			}		
 	}
 }
-}//класс
+}//РєР»Р°СЃСЃ

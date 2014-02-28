@@ -1,4 +1,4 @@
-package guiSwing;
+п»їpackage guiSwing;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -19,30 +19,30 @@ public class TraumForm implements MouseListener,ActionListener{
 	JTable tab;
 	
 	TraumForm(){
-		JFrame frame = new JFrame("Tравмы");
+		JFrame frame = new JFrame("TСЂР°РІРјС‹");
 		tab = new JTable();
 		ResultSet rs;
 		JComboBox jcb=new JComboBox();
 		try {
-			rs = BdGUI.st.executeQuery("SELECT SecName FROM Спортсмены");
+			rs = BdGUI.st.executeQuery("SELECT SecName FROM РЎРїРѕСЂС‚СЃРјРµРЅС‹");
 			while(rs.next())
 				jcb.addItem(rs.getString(1));
 		} catch (SQLException e1) {
-			// TODO Автоматически созданный блок catch
+			// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 			e1.printStackTrace();
 		}	
 		//add(tab);
 		  
 		tab.addMouseListener(this);
 		JPanel panel = new JPanel();
-		JButton jbtnSave = new JButton("Сохранить");
+		JButton jbtnSave = new JButton("РЎРѕС…СЂР°РЅРёС‚СЊ");
 		jbtnSave.addActionListener(this);
 		panel.setLayout(new BorderLayout());
 		JScrollPane jscrPane = new JScrollPane(tab);
-		mod = new DefaultTableModel(new String[] {"Фамилия","получил","вышел","место"},0);
+		mod = new DefaultTableModel(new String[] {"Р¤Р°РјРёР»РёСЏ","РїРѕР»СѓС‡РёР»","РІС‹С€РµР»","РјРµСЃС‚Рѕ"},0);
 		tab.setModel(mod);
 		try {
-			rs = BdGUI.st.executeQuery("SELECT SecName,dateBegin,dateEnd,place FROM Травмы t INNER JOIN Спортсмены s ON "+
+			rs = BdGUI.st.executeQuery("SELECT SecName,dateBegin,dateEnd,place FROM РўСЂР°РІРјС‹ t INNER JOIN РЎРїРѕСЂС‚СЃРјРµРЅС‹ s ON "+
 		"t.idS = s.idS");
 			while(rs.next()){
 				Vector<String> data = new Vector<String>();
@@ -53,7 +53,7 @@ public class TraumForm implements MouseListener,ActionListener{
 				mod.addRow(data);
 			}
 		} catch (SQLException e) {
-			// TODO Автоматически созданный блок catch
+			// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 			e.printStackTrace();
 		}
 		numRows = mod.getRowCount();
@@ -78,19 +78,19 @@ public class TraumForm implements MouseListener,ActionListener{
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Автоматически созданная заглушка метода
+		// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅР°СЏ Р·Р°РіР»СѓС€РєР° РјРµС‚РѕРґР°
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Автоматически созданная заглушка метода
+		// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅР°СЏ Р·Р°РіР»СѓС€РєР° РјРµС‚РѕРґР°
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Автоматически созданная заглушка метода
+		// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅР°СЏ Р·Р°РіР»СѓС€РєР° РјРµС‚РѕРґР°
 		
 	}
 	
@@ -101,7 +101,7 @@ public class TraumForm implements MouseListener,ActionListener{
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Автоматически созданная заглушка метода
+		// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅР°СЏ Р·Р°РіР»СѓС€РєР° РјРµС‚РѕРґР°
 		
 	}
 
@@ -112,7 +112,7 @@ public class TraumForm implements MouseListener,ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("Сохранить")){			
+		if(e.getActionCommand().equals("РЎРѕС…СЂР°РЅРёС‚СЊ")){			
 			try {
 				if(numRows!=mod.getRowCount()-1){
 					System.out.println(numRows);
@@ -121,14 +121,14 @@ public class TraumForm implements MouseListener,ActionListener{
 						if((dateBegin==null)||(dateBegin.trim().equals(""))) dateBegin = "null";
 						String dateEnd = (String) tab.getValueAt(i, 2);
 						if((dateEnd==null)||(dateEnd.trim().equals(""))) dateEnd = "null";
-						BdGUI.st.executeUpdate("INSERT INTO Травмы (idS,dateBegin,dateEnd,place) SELECT s.idS,"+getDate(tab.getValueAt(i, 1))+
-						","+getDate(tab.getValueAt(i, 2))+",'"+tab.getValueAt(i, 3)+"' FROM Спортсмены s WHERE SecName='"+tab.getValueAt(i, 0)+"'");
-					    if(tab.getValueAt(i, 2)==null)BdGUI.st.executeUpdate("UPDATE Спортсмены SET traum = true");
-					    else BdGUI.st.executeUpdate("UPDATE Спортсмены SET traum = false WHERE SecName='"+tab.getValueAt(i, 0)+"'");
+						BdGUI.st.executeUpdate("INSERT INTO РўСЂР°РІРјС‹ (idS,dateBegin,dateEnd,place) SELECT s.idS,"+getDate(tab.getValueAt(i, 1))+
+						","+getDate(tab.getValueAt(i, 2))+",'"+tab.getValueAt(i, 3)+"' FROM РЎРїРѕСЂС‚СЃРјРµРЅС‹ s WHERE SecName='"+tab.getValueAt(i, 0)+"'");
+					    if(tab.getValueAt(i, 2)==null)BdGUI.st.executeUpdate("UPDATE РЎРїРѕСЂС‚СЃРјРµРЅС‹ SET traum = true");
+					    else BdGUI.st.executeUpdate("UPDATE РЎРїРѕСЂС‚СЃРјРµРЅС‹ SET traum = false WHERE SecName='"+tab.getValueAt(i, 0)+"'");
 						}
 					}				
 			} catch (SQLException e1) {
-				// TODO Автоматически созданный блок catch
+				// TODO РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹Р№ Р±Р»РѕРє catch
 				e1.printStackTrace();
 			}					
 		}		

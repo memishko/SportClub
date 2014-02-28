@@ -1,4 +1,4 @@
-package guiSwing;
+п»їpackage guiSwing;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,8 +21,8 @@ public class UpdSp {
 		form.jtxtDOB.setText(date);
 		form.jcbSpec.setSelectedItem(spec);		
 		st = BdGUI.st;
-		ResultSet rs = st.executeQuery("SELECT idS,Otch,CSecName,skillName,rating FROM  (((Спортсмены s INNER JOIN Тренеры "
-				+ "t ON s.Coach = t.idCoach) INNER"+" JOIN Мастерство m ON m.idSkill = s.Skill) INNER JOIN Специализация k ON k.idSpec"+
+		ResultSet rs = st.executeQuery("SELECT idS,Otch,CSecName,skillName,rating FROM  (((РЎРїРѕСЂС‚СЃРјРµРЅС‹ s INNER JOIN РўСЂРµРЅРµСЂС‹ "
+				+ "t ON s.Coach = t.idCoach) INNER"+" JOIN РњР°СЃС‚РµСЂСЃС‚РІРѕ m ON m.idSkill = s.Skill) INNER JOIN РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ k ON k.idSpec"+
 				" = s.spSpecializ) WHERE SecName='"+secName+"' AND spName ='"+name+"' AND specializeName='"+spec+"'");
 		if(rs.next()){
 			editSp = rs.getInt("idS");
@@ -33,7 +33,7 @@ public class UpdSp {
 			form.jlabelRating.setVisible(true);
 			form.jtxtRating.setVisible(true);
 		}
-		rs = st.executeQuery("SELECT gameName,pos FROM (Соревнования s INNER JOIN протоколы p ON s.idGame = p.IDSr) INNER JOIN Спортсмены sp"+
+		rs = st.executeQuery("SELECT gameName,pos FROM (РЎРѕСЂРµРІРЅРѕРІР°РЅРёСЏ s INNER JOIN РїСЂРѕС‚РѕРєРѕР»С‹ p ON s.idGame = p.IDSr) INNER JOIN РЎРїРѕСЂС‚СЃРјРµРЅС‹ sp"+
 		" ON sp.idS = p.IDsp WHERE idS ="+editSp);
 		while(rs.next()){
 			Vector<String> data = new Vector<String>();
